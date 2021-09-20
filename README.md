@@ -1,5 +1,5 @@
 Author : Mino Lee Sasse
-Matrikelnummer : 777030
+
 Written on : ElementaryOS Loki (base Ubuntu 16.04?)
 
 
