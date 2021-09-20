@@ -1,0 +1,45 @@
+.TH 
+.SH DESCRIPTION
+ CPPII Project : SuffixArray
+ This program has three modes :
+ 1. \fICreation\-mode\fR : Taking a text\-file as argument and saving the data and the created suffix-array in a data\-file.
+    The argument can be specified with \fB\-i\fR or passed as the only argument without a preceeding option.
+    (stores data\-file to "SA_DATA" or specify with \fB\-o\fR)
+ 2. \fIFind-mode\fR : Taking a pattern as argument, specified by \fB-f\fR and a data\-file (from 1.) as argument, specified by \fB\-i\fR
+ 3. \fICreation\fR-&\fIFind\-mode\fR : If two arguments without preceeding options are passed directly to the program, 
+    no data-file will be created. The first argument is the text-file and the second argument the pattern to search.
+.SH USAGES:
+ ./bin/SuffixArray \fIFILE\fR [\fIOPTION\fR]\fIARG\fR [\fIFLAG\fR]
+ ./bin/SuffixArray [\fIOPTION\fR]\fIARG\fR [\fIFLAG\fR]
+ ./bin/SuffixArray \fIFILE\fR \fIPATTERN\fR [\fIOPTION\fR]\fIARG\fR [\fIFLAG\fR]
+.SH EXAMPLES:
+ 1. ./bin/SuffixArray example_data/balack_small.txt
+    (stores data and suffix-array in "SA_DATA")
+
+ 2. ./bin/SuffixArray -f was -i SA_DATA
+    (if -f is specified, reads precomputed data from SA_DATA)
+
+ 3. ./bin/SuffixArray example_data/balack_small.txt was -sw 10
+    (does NOT store, looks for pattern "was" in suffix-array directly)
+
+.SH OPTION:
+ \fB\-i\fR	\fIInput\fR, Either specifies the input-corpus OR the precomputed-SA_DATA-file, if \fB\-f\fR is specified you must specify the SA_DATA-file here
+
+ \fB\-o\fR	\fIOutput\fR, name of file in which SA_DATA is stored. (\fIdefault\fR: "SA_DATA")
+
+ \fB\-f\fR	\fIFind\fR, pattern/infix to find in corpus, if specified, \fB\-i\fR has to be specified with precomputed SA_DATA
+
+ \fB\-sw\fR	\fISubstringWidth\fR, set the width of printed substrings, in which the pattern has been found
+
+.SH FLAG:
+ \fB\-n\fR	\fINaive\fR, use the naive suffix-array-algorithm (\fIdefault\fR: \fB\-is\fR)
+ 
+ \fB\-np\fR	\fINaiveParallel\fR, use the naive, parallel suffix-array-algorithm (\fIdefault\fR: \fB\-is\fR)
+ 
+ \fB\-is\fR	\fIInducedSorting\fR, use the induced-sorting-suffix-array-algorithm (\fIdefault\fR)
+ 
+ \fB\-tc\fR	\fITryCompression\fR, try-compressing suffix-array, by storing the indices as hexadecimal strings
+ 
+ \fB\-fn\fR	\fIFilterNewline\fR, filters the input-corpus and removes all newline-markers.
+ 
+ \fB\-lcp\fR	\fIuseLCP\fR, use longest-common-prefix-arrays. Use with caution, because it is very slow!!
